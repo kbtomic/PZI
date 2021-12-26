@@ -1,0 +1,41 @@
+﻿@model PZI_projekt.ViewModels.CreateAccountViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/create_account_styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <title>MyAudi</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form" method="post" asp-action="CreateAccount">
+            <div asp-validation-summary="ModelOnly"></div>
+            <h1 class="form-title">Create Account</h1>
+            <div class="form-input-group">
+                <input asp-for="Username" type="text" id="signUpUsername" class="form-input" autofocus placeholder="Userame">
+                <span asp-validation-for="Username" id="username-validation"></span>
+            </div>
+            <div class="form-input-group">
+                <input asp-for="Email" type="text" class="form-input" autofocus placeholder="E-mail">
+                <span asp-validation-for="Email" id="e-mail-validation"></span>
+            </div>
+            <div class="form-input-group">
+                <input asp-for="Password" type="password" class="form-input" autofocus placeholder="Password">
+                <span asp-validation-for="Password" id="password-validation"></span>
+            </div>
+            <div class="form-input-group">
+                <input asp-for="ConfirmPassword" type="password" class="form-input" autofocus placeholder="Confirm password">
+                <span asp-validation-for="ConfirmPassword" id="confirm-password-validation"></span>
+            </div>
+            <button class="form-button" type="submit">Continue</button>
+            <p class="form-text"><a asp-controller="Login" asp-action="Login" class="form-link" id="linkLogin">Already have an account? Sign in!</a></p>
+        </form>
+    </div>
+</body>
+</html>

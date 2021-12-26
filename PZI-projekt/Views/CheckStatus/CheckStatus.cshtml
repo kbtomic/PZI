@@ -1,0 +1,159 @@
+﻿@model IEnumerable<PZI_projekt.Models.Car>
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<IdentityUser> signInManager;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/check_status_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <title>MyAudi</title>
+</head>
+<body>
+    @{ int number = 0;
+        if (User.Identity.Name == "klara.tomic69@gmail.com")
+        {
+            number = 1;
+        }
+        else if (User.Identity.Name == "ktomic01@fesb.hr")
+        {
+            number = 2;
+        }
+    }
+    <header class="header">
+        <div class="header-container">
+            <div class="back-container">
+                <img onclick="history.back()" src="/assets/icons8-back-24.png" alt="Go back" class="back">
+            </div>
+            <p class="vehicle-status">Vehicle status</p>
+            <div></div>
+        </div>
+    </header>
+    <div class="main">
+        <div class="wrapper">
+            <div class="icon-text">
+                <img src="/assets/lock-small.svg" alt="Lock">
+                <p>Lock status</p>
+            </div>
+            @foreach (var obj in Model)
+            {
+                if (obj.Id == number)
+                {
+                    if (obj.IsLocked == false)
+                    {
+                        <p>Unlocked</p>
+                    }
+                    else
+                    {
+                        <p>Locked</p>
+                    }
+
+                }
+            }
+        </div>
+        <div class="wrapper">
+            <div class="icon-text">
+                <img src="/assets/door-open-small.svg" alt="Door open">
+                <p>All doors</p>
+            </div>
+            @foreach (var obj in Model)
+            {
+                if (obj.Id == number)
+                {
+                    if (obj.AreDoorsOpened == true)
+                    {
+                        <p>Opened</p>
+                    }
+                    else
+                    {
+                        <p>Closed</p>
+                    }
+                }
+            }
+        </div>
+        <div class="wrapper">
+            <div class="icon-text">
+                <img src="/assets/roof-open-small.svg" alt="Window open">
+                <p>All windows</p>
+            </div>
+            @foreach (var obj in Model)
+            {
+                if (obj.Id == number)
+                {
+                    if (obj.AreWindowsOpened == true)
+                    {
+                        <p>Opened</p>
+                    }
+                    else
+                    {
+                        <p>Closed</p>
+                    }
+                }
+            }
+        </div>
+        <div class="wrapper">
+            <div class="icon-text">
+                <img src="/assets/bonnet-open-small.svg" alt="Bonnet open">
+                <p>Bonnet</p>
+            </div>
+            @foreach (var obj in Model)
+            {
+                if (obj.Id == number)
+                {
+                    if (obj.IsBonnetOpened == true)
+                    {
+                        <p>Opened</p>
+                    }
+                    else
+                    {
+                        <p>Closed</p>
+                    }
+                }
+            }
+        </div>
+        <div class="wrapper">
+            <div class="icon-text">
+                <img src="/assets/trunk-open-small.svg" alt="Trunk open">
+                <p>Trunk</p>
+            </div>
+            @foreach (var obj in Model)
+            {
+                if (obj.Id == number)
+                {
+                    if (obj.IsTrunkOpened == true)
+                    {
+                        <p>Opened</p>
+                    }
+                    else
+                    {
+                        <p>Closed</p>
+                    }
+                }
+            }
+        </div>
+        <div class="wrapper">
+            <div class="icon-text">
+                <img src="/assets/oil-change-small.svg" alt="Oil">
+                <p>Engine oil</p>
+            </div>
+            @foreach (var obj in Model)
+            {
+                if (obj.Id == number)
+                {
+                    if (obj.OilOK == false)
+                    {
+                        <p>Please change oil!</p>
+                    }
+                    else
+                    {
+                        <p>Oil OK!</p>
+                    }
+                }
+            }
+        </div>
+    </div>
+</body>
+</html>

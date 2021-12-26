@@ -1,0 +1,82 @@
+﻿body {
+    --color-primary: #ffffff;
+    --color-primary-dark: #29579c;
+    --color-secondary: #252c6a;
+    --border-radius: 4px;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    font-size: 18px;
+    background-color: var(--color-primary-dark);
+}
+
+.header {
+    background: var(--color-primary-dark);
+    opacity: 0.9;
+}
+
+.header-container {
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.vehicle-status {
+    font: 500 1.5rem 'Quicksand', sans-serif;
+    width: fit-content;
+    text-align: center;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.main {
+    max-width: 1900px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 2px;
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+.icon-text {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main p {
+    color: var(--color-primary);
+    font: 500 1.3rem 'Quicksand', sans-serif;
+    padding: 5px;
+}
+
+.back-container {
+    display: flex;
+    justify-content: start;
+    visibility: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+    .back-container {
+        visibility: visible;
+        cursor: pointer;
+    }
+}

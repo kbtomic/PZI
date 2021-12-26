@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>PZI_projekt</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\CreateAccount\CreateAccount.cshtml" />
+    <Content Remove="Views\FrontPage\FrontPage.cshtml" />
+    <Content Remove="Views\Login\Login.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\CreateAccount\CreateAccount.cshtml" />
+    <None Include="Views\FrontPage\FrontPage.cshtml" />
+    <None Include="Views\Login\Login.cshtml" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<PZI_projekt.Models.Car>
+
+@using Microsoft.AspNetCore.Identity;
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/front_page_styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+    <title>MyAudi</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            @{ int number = 0;
+                if (User.Identity.IsAuthenticated)
+                {
+                    if (User.Identity.Name == "klara.tomic69@gmail.com")
+                    {
+                        number = 1;
+                    }
+                    else if (User.Identity.Name == "ktomic01@fesb.hr")
+                    {
+                        number = 2;
+                    }
+                }
+            }
+            <img src="../assets/announcements-small.svg" alt="Notification" class="icon notification">
+            @foreach (var obj in Model)
+            {
+                if (obj.Id == number)
+                {
+                    <button class="my-car">@obj.Model</button>
+                }
+            }
+            <form method="post" asp-action="Logout" asp-controller="Login">
+                <input type="image" src="~/assets/private-customer-small.svg" />
+                @*<img src="~/assets/private-customer-small.svg" alt="My garage" class="icon logout">*@
+            </form>
+        </div>
+    </header>
+    <div class="main">
+        <img src="../assets/my-car.jpg" alt="My car" class="my-car-img">
+        <button class="check-status"><a class="link-button" asp-controller="CheckStatus" asp-action="CheckStatus">CHECK STATUS</a></button>
+        <div class="icons-options">
+            <img src="/assets/lock-small.svg" alt="Lock car" class="icon lock-car">
+            <img src="/assets/lock-unlock-small.svg" alt="Unlock car" class="icon unlock-car">
+            <img src="/assets/lights-full-beam-small.svg" alt="Lights" class="icon lights">
+            <img src="/assets/honk-small.svg" alt="Honk" class="icon honk">
+            <img src="/assets/pre-heating-small.svg" alt="Preheating" class="icon preheating">
+        </div>
+        <div class="vehicle-info-wrapper">
+            <p class="vehicle-info">VEHICLE INFO</p>
+            @foreach (var obj in Model)
+            {
+                if (obj.Id == number)
+                {
+                    <div class="model-wrapper">
+                        <p>Model</p>
+                        <p>@obj.Model</p>
+                    </div>
+                    <div class="vin-wrapper">
+                        <p>VIN</p>
+                        <p>@obj.VIN</p>
+                    </div>
+                    <div class="mileage-wrapper">
+                        <p>Mileage</p>
+                        <p>@obj.Mileage</p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <script src="/js/front_page.js"></script>
+</body>
+</html>
