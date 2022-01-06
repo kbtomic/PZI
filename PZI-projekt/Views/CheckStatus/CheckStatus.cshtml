@@ -1,6 +1,6 @@
-﻿@model IEnumerable<PZI_projekt.Models.Car>
+﻿@model Car
 @using Microsoft.AspNetCore.Identity;
-@inject SignInManager<IdentityUser> signInManager;
+@inject SignInManager<ApplicationUser> signInManager;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,20 +13,6 @@
     <title>MyAudi</title>
 </head>
 <body>
-    @{ int number = 0;
-        if (User.Identity.Name == "klara.tomic69@gmail.com")
-        {
-            number = 1;
-        }
-        else if (User.Identity.Name == "ktomic01@fesb.hr")
-        {
-            number = 2;
-        }
-        else
-        {
-            number = 3;
-        }
-    }
     <header class="header">
         <div class="header-container">
             <div class="back-container">
@@ -42,40 +28,20 @@
                 <img src="/assets/lock-small.svg" alt="Lock">
                 <p>Lock status</p>
             </div>
-            @foreach (var obj in Model)
-            {
-                if (obj.Id == number)
-                {
-                    if (obj.IsLocked == false)
-                    {
-                        <p>Unlocked</p>
-                    }
-                    else
-                    {
-                        <p>Locked</p>
-                    }
-
-                }
-            }
-        </div>
+            <p class="lock-status">Locked</p>
+            </div>
         <div class="wrapper">
             <div class="icon-text">
                 <img src="/assets/door-open-small.svg" alt="Door open">
                 <p>All doors</p>
             </div>
-            @foreach (var obj in Model)
+            @if (Model.AreDoorsOpened == true)
             {
-                if (obj.Id == number)
-                {
-                    if (obj.AreDoorsOpened == true)
-                    {
-                        <p>Opened</p>
-                    }
-                    else
-                    {
-                        <p>Closed</p>
-                    }
-                }
+                <p>Opened</p>
+            }
+            else
+            {
+                <p>Closed</p>
             }
         </div>
         <div class="wrapper">
@@ -83,19 +49,13 @@
                 <img src="/assets/roof-open-small.svg" alt="Window open">
                 <p>All windows</p>
             </div>
-            @foreach (var obj in Model)
+            @if (Model.AreWindowsOpened == true)
             {
-                if (obj.Id == number)
-                {
-                    if (obj.AreWindowsOpened == true)
-                    {
-                        <p>Opened</p>
-                    }
-                    else
-                    {
-                        <p>Closed</p>
-                    }
-                }
+                <p>Opened</p>
+            }
+            else
+            {
+                <p>Closed</p>
             }
         </div>
         <div class="wrapper">
@@ -103,19 +63,14 @@
                 <img src="/assets/bonnet-open-small.svg" alt="Bonnet open">
                 <p>Bonnet</p>
             </div>
-            @foreach (var obj in Model)
+
+            @if (Model.IsBonnetOpened == true)
             {
-                if (obj.Id == number)
-                {
-                    if (obj.IsBonnetOpened == true)
-                    {
-                        <p>Opened</p>
-                    }
-                    else
-                    {
-                        <p>Closed</p>
-                    }
-                }
+                <p>Opened</p>
+            }
+            else
+            {
+                <p>Closed</p>
             }
         </div>
         <div class="wrapper">
@@ -123,19 +78,13 @@
                 <img src="/assets/trunk-open-small.svg" alt="Trunk open">
                 <p>Trunk</p>
             </div>
-            @foreach (var obj in Model)
+            @if (Model.IsTrunkOpened == true)
             {
-                if (obj.Id == number)
-                {
-                    if (obj.IsTrunkOpened == true)
-                    {
-                        <p>Opened</p>
-                    }
-                    else
-                    {
-                        <p>Closed</p>
-                    }
-                }
+                <p>Opened</p>
+            }
+            else
+            {
+                <p>Closed</p>
             }
         </div>
         <div class="wrapper">
@@ -143,21 +92,16 @@
                 <img src="/assets/oil-change-small.svg" alt="Oil">
                 <p>Engine oil</p>
             </div>
-            @foreach (var obj in Model)
+            @if (Model.OilOK == false)
             {
-                if (obj.Id == number)
-                {
-                    if (obj.OilOK == false)
-                    {
-                        <p>Please change oil!</p>
-                    }
-                    else
-                    {
-                        <p>Oil OK!</p>
-                    }
-                }
+                <p>Please change oil!</p>
+            }
+            else
+            {
+                <p>Oil OK!</p>
             }
         </div>
     </div>
+    <script src="~/js/check_status.js"></script>
 </body>
 </html>

@@ -20,5 +20,8 @@ namespace PZI_projekt.Models
         public bool IsBonnetOpened { get; set; }
         public bool IsTrunkOpened { get; set; }
         public bool OilOK { get; set; }
+        public string UserId { get; set; }
+        [ForeignKey("UserId")]
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

@@ -12,11 +12,11 @@ namespace PZI_projekt.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly SignInManager<IdentityUser> signInManager;
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<ApplicationUser> signInManager;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public LoginController(SignInManager<IdentityUser> signInManager,
-                                    UserManager<IdentityUser> userManager)
+        public LoginController(SignInManager<ApplicationUser> signInManager,
+                                    UserManager<ApplicationUser> userManager)
         {
             this.signInManager = signInManager;
             this.userManager = userManager;

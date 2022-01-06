@@ -17,5 +17,14 @@ namespace PZI_projekt.Data
 
         public DbSet <User> User { get; set; }
         public DbSet<Car> Car { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder); modelBuilder.Entity<Car>()
+            .HasOne(x => x.ApplicationUser)
+            .WithMany(x => x.Car);
+        }
+
+
     }
 }

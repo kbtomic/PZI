@@ -10,6 +10,7 @@ lock.addEventListener("click", () => {
     if(shouldLockCar)
     {
         alert("Successfully locked the car!");
+        localStorage.setItem("state", "Locked");
     }
 });
 
@@ -18,6 +19,7 @@ unlock.addEventListener("click", () => {
     if(shouldUnlockCar)
     {
         alert("Successfully unlocked the car!");
+        localStorage.setItem("state", "Unlocked");
     }
 });
 

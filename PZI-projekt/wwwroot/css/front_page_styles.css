@@ -107,3 +107,34 @@ body {
 .notification {
     visibility: hidden;
 }
+
+.check-status {
+    width: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    align-items: center;
+}
+
+@media only screen and (min-width: 600px) {
+    .main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        top: 50%;
+        transform: translate(0, 20%);
+    }
+
+    .my-car-img {
+        width: 50%;
+        height: 430px;
+        border-radius: 5px;
+        margin: 0px 5px;
+    }
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+    }
+}
